@@ -1,0 +1,243 @@
+/* Cores e tipografia */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: #203632;
+  background: #f2f5f2;
+  font: 1rem/1.55 "Segoe UI", Arial, sans-serif;
+}
+
+h1, h2, h3, p { margin: 0; }
+a { color: #146456; }
+button, input, textarea { font: inherit; }
+button, a, input, textarea { outline-offset: 3px; }
+:focus-visible { outline: 3px solid #9370ca; }
+
+header, main {
+  width: 94%;
+  max-width: 1120px;
+  margin: auto;
+  overflow-wrap: anywhere;
+}
+
+/* Marca e navegação */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #c9d6cf;
+}
+
+#marca {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  color: #123d35;
+  text-decoration: none;
+  letter-spacing: -.06em;
+  line-height: 1;
+}
+
+#marca::before {
+  content: "";
+  width: 1.65rem;
+  height: 1.65rem;
+  border: .35rem double #134d43;
+  border-radius: 50%;
+  background: #b8e6b0;
+}
+
+main {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(15rem, 1fr);
+  grid-template-areas:
+    "nav nav"
+    "form form"
+    "aviso aviso"
+    "busca lateral"
+    "feed lateral";
+  grid-template-rows: auto auto auto auto 1fr;
+  column-gap: 1.5rem;
+  align-items: start;
+  padding-bottom: 3rem;
+}
+
+nav {
+  grid-area: nav;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 1rem 0 1.25rem;
+}
+
+button {
+  border: 1px solid #c9d7ce;
+  padding: .5rem .9rem;
+  border-radius: .65rem;
+  color: #254a40;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: #e0efe4; border-color: #91ac9c; }
+button:active { background: #d2e6d8; }
+#novo { margin-left: auto; }
+#novo, #conta button, button[type="submit"] {
+  color: #fff;
+  background: #195d4f;
+  border-color: #195d4f;
+}
+#novo:hover, #conta button:hover, button[type="submit"]:hover { background: #10483c; }
+#conta { max-width: 50%; }
+#conta button { max-width: 100%; overflow-wrap: anywhere; }
+
+/* Cabeçalho do feed. O planeta e os anéis são formas feitas com CSS. */
+main > section:not([id]) {
+  grid-area: busca;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  background: white;
+  border: 1px solid #d2ded5;
+  border-radius: 1rem;
+}
+
+#titulo {
+  position: relative;
+  overflow: hidden;
+  padding: 2.2rem 32% 2.2rem 1.4rem;
+  margin-bottom: 1rem;
+  background-color: #163e38;
+  background-image: radial-gradient(circle, #78998b 1px, transparent 1px);
+  background-size: 21px 21px;
+  color: white;
+  font-size: 2.35rem;
+  letter-spacing: -.055em;
+  line-height: 1.12;
+  text-shadow: 0 2px 3px #163e38;
+}
+
+#titulo::before, #titulo::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+#titulo::before {
+  width: 5rem;
+  height: 5rem;
+  top: 50%;
+  right: 10%;
+  margin-top: -2.5rem;
+  background: linear-gradient(140deg, #eff6c6, #b4d59a 45%, #548773);
+  box-shadow: inset -.45rem -.35rem 0 #446b59;
+}
+
+#titulo::after {
+  width: 8rem;
+  height: 1.4rem;
+  top: 50%;
+  right: 10%;
+  margin: -.7rem -1.5rem 0 0;
+  border: 4px double #e0edba;
+  transform: rotate(-26deg);
+}
+
+label { display: block; font-weight: 600; font-size: .94rem; }
+main > section:not([id]) label { margin: 0 1.25rem .55rem; }
+#atualizar { margin-left: 1.25rem; font-size: .88rem; }
+input, textarea {
+  display: block;
+  width: 100%;
+  margin-top: .3rem;
+  padding: .65rem .8rem;
+  color: #203632;
+  background: #f7faf7;
+  border: 1px solid #b5c7bd;
+  border-radius: .55rem;
+}
+textarea { min-height: 5rem; resize: vertical; }
+
+/* Publicações, comentários e painéis */
+#feed { grid-area: feed; min-width: 0; }
+article, aside > div, #painel {
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid #d2ded5;
+  border-radius: 1rem;
+  box-shadow: 0 3px 12px #24372c09;
+}
+article, aside > div { margin-bottom: 1rem; }
+article:target { outline: 2px solid #508a72; }
+.autor { display: flex; align-items: center; gap: .65rem; }
+.autor strong { line-height: 1.25; }
+.foto, .iniciais {
+  flex: none;
+  width: 2.45rem;
+  height: 2.45rem;
+  border-radius: 50%;
+}
+.foto { object-fit: cover; }
+.iniciais {
+  display: inline-block;
+  background: #e6def1;
+  color: #53436f;
+  text-align: center;
+  line-height: 2.45rem;
+  font-weight: 700;
+}
+
+small { color: #5d6c64; font-size: .82rem; }
+article > small, .comentario > small { display: block; margin: .2rem 0 .7rem; }
+.texto { white-space: pre-wrap; margin: .6rem 0 1rem; line-height: 1.65; }
+.imagem { display: block; max-width: 100%; max-height: 30rem; margin: .8rem auto; border-radius: .7rem; }
+article button, form button, #painel > button { margin: .22rem .35rem .1rem 0; }
+article button { font-size: .9rem; }
+button.ativo { background: #e3d8f0; color: #593579; border-color: #bba2d3; }
+.comentario, article form {
+  margin-top: 1rem;
+  padding: .85rem 1rem;
+  background: #f4f7f4;
+  border-left: 3px solid #a5c6b0;
+  border-radius: .45rem;
+}
+
+aside { grid-area: lateral; min-width: 0; }
+aside h3 { font-size: 1.25rem; letter-spacing: -.035em; }
+aside h3 + p { color: #58675e; font-size: .9rem; margin: .15rem 0 .6rem; }
+#radar p, #pessoas p { padding: .7rem 0; border-top: 1px solid #e2e9e3; }
+#radar p:last-child, #pessoas p:last-child { padding-bottom: 0; }
+#radar a { font-weight: 600; text-underline-offset: .18em; }
+#pessoas small { display: block; margin-left: 3.1rem; }
+
+#painel { grid-area: form; margin-bottom: 1rem; border-top: 4px solid #79a68b; }
+#painel h2 { margin-bottom: .6rem; }
+#painel form { max-width: 38rem; }
+#painel label { margin-bottom: .8rem; }
+#aviso { grid-area: aviso; }
+#aviso:not(:empty), #feed > p {
+  padding: .8rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: .6rem;
+  background: #deeade;
+}
+.oculto, .iniciais.oculto { display: none; }
+
+/* Em telas menores os painéis passam para baixo das publicações. */
+@media (max-width: 720px) {
+  main { display: flex; flex-direction: column; }
+  main > * { width: 100%; }
+  aside { order: 1; margin-top: 1rem; }
+  #titulo { font-size: 1.85rem; padding-left: 1rem; }
+  article, aside > div, #painel { padding: 1rem; }
+}
+
+@media (max-width: 460px) {
+  header { padding: .9rem 0; }
+  nav { display: grid; grid-template-columns: 1fr 1fr; }
+  #novo { margin: 0; }
+  #titulo::before { right: 7%; width: 3.3rem; height: 3.3rem; margin-top: -1.65rem; }
+  #titulo::after { right: 7%; width: 5.2rem; height: .9rem; margin: -.45rem -.95rem 0 0; }
+}

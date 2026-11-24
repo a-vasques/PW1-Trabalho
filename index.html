@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="estilo.css">
+  <title>Órbita — Rede social</title>
+</head>
+<body>
+<header><h1><a href="#inicio" id="marca">Órbita</a></h1><div id="conta"></div></header>
+<main id="inicio">
+  <nav aria-label="Navegação"><button id="publico">Feed público</button> <button id="alta">Em alta</button> <button id="meus">Meus posts</button> <button id="novo">Novo post</button></nav>
+  <section id="painel" class="oculto" aria-label="Formulário"></section>
+  <p id="aviso" role="status"></p>
+  <section><h2 id="titulo">Feed público</h2><label>Buscar por texto, nome ou usuário <input id="busca" type="search"></label> <button id="atualizar">Atualizar feed</button></section>
+  <aside><div><h3>No radar</h3><p>Publicações mais curtidas</p><div id="radar"></div></div>
+    <div><h3>Comunidade</h3><p>Quem publicou recentemente</p><div id="pessoas"></div></div></aside>
+  <section id="feed" aria-label="Publicações"></section>
+</main>
+<script src="servico.js"></script>
+<script src="rede.js"></script>
+</body>
+</html>
